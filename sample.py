@@ -2,7 +2,7 @@ from sklearn.datasets.samples_generator import make_blobs
 
 import treetk
 
-import loupe
+import clustering
 
 # Data preparation
 vectors, _ = make_blobs(n_samples=50,
@@ -10,7 +10,7 @@ vectors, _ = make_blobs(n_samples=50,
                         cluster_std=0.5)
 
 # Test K-Means
-model = loupe.clustering(
+model = clustering.clustering(
             vectors=vectors,
             method="kmeans",
             params={"n_clusters": 4})
@@ -19,7 +19,7 @@ cluster_centers = model.get_cluster_centers()
 predicted_cluster_ids = model.predict_clusters(vectors)
 
 # Test Gaussian Mixture Model
-model = loupe.clustering(
+model = clustering.clustering(
             vectors=vectors,
             method="gmm",
             params={"n_clusters": 4, "covariance_type": "full"})
@@ -29,7 +29,7 @@ cluster_covariances = model.get_cluster_covariances()
 predicted_cluster_ids = model.predict_clusters(vectors)
 
 # Test Affinity Propagation
-model = loupe.clustering(
+model = clustering.clustering(
             vectors=vectors,
             method="affinitypropagation",
             params={"preference": -50})
@@ -38,7 +38,7 @@ cluster_centers = model.get_cluster_centers()
 predicted_cluster_ids = model.predict_clusters(vectors)
 
 # Test Mean Shift
-model = loupe.clustering(
+model = clustering.clustering(
             vectors=vectors,
             method="meanshift",
             params={})
@@ -47,7 +47,7 @@ cluster_centers = model.get_cluster_centers()
 predicted_cluster_ids = model.predict_clusters(vectors)
 
 # Test Agglomerative Clustering
-model = loupe.clustering(
+model = clustering.clustering(
             vectors=vectors,
             method="agglomerative",
             params={"n_clusters": 4, "linkage": "ward", "n_neighbors": 10})
