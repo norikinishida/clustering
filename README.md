@@ -1,5 +1,7 @@
 # clustering
 
+(c) 2019 Noriki Nishida
+
 A Python library for clustering continuous vectors.
 
 ## Required packages ##
